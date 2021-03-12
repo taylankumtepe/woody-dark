@@ -1,0 +1,179 @@
+# vim:ft=conf
+
+##########################
+# WM Independent Hotkeys #
+##########################
+
+# Terminal Emulator (Kitty)
+
+super + Return
+	/usr/bin/kitty
+
+# Program Launcher (Rofi)
+super + p
+	/usr/bin/rofi -show drun -show-icons
+
+# Window Switcher (Rofi)
+super + w
+	/usr/bin/rofi -show window -show-icons
+
+# Make Sxhkd reload its configuration files
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Web Browser (Firefox)
+super + b 
+	/opt/firefox/firefox
+
+# File Manager (PCManFM)
+super + o
+	/usr/bin/pcmanfm
+
+# Flameshot 
+Print
+	/usr/bin/flameshot gui
+
+# VScode
+super + v
+	/usr/bin/code
+
+# Make Dunst send a tes notification
+super + k
+	notify-send "Test notification"
+
+### Config shortcuts ###
+
+# Bspwm Config
+super + ctrl + 1
+	/usr/bin/kitty -e vim /home/taylank/.config/bspwm/bspwmrc
+
+# Sxhkd Config
+super + ctrl + 2 
+	/usr/bin/kitty -e vim /home/taylank/.config/sxhkd/sxhkdrc
+
+# Compton Config
+super + ctrl + 3
+	/usr/bin/kitty -e vim /home/taylank/.config/compton/compton.conf
+
+# Kitty Config
+super + ctrl + 4
+	/usr/bin/kitty -e vim /home/taylank/.config/kitty/kitty.conf
+
+# Polybar Config
+super + ctrl + 5 
+	/usr/bin/kitty -e vim /home/taylank/.config/polybar/config
+
+# Rofi Config 
+super + ctrl + 6
+	/usr/bin/kitty -e vim /home/taylank/.config/rofi/config.rasi
+
+# Open $HOME in Vim 
+super + ctrl + Return
+	/usr/bin/kitty -e vim /home/taylank/
+
+#################
+# Bspwm Hotkeys #
+#################
+
+# Quit Bspwm
+super + shift + q
+	/usr/bin/bspc quit
+
+# Restart Bspwm
+super + shift + r
+	/home/taylank/.config/bspwm/bspwmrc
+
+# Close window
+super + x
+	/usr/bin/bspc node -c
+
+# Send the newest marked node to the newest preselected node
+super + y
+	/usr/bin/bspc node newest.marked.local -n newest.!automatic.local
+
+# Swap the current node and the biggest node
+super + l
+	/usr/bin/bspc node -s biggest
+
+
+##### Bsp-Layout #####
+
+super + shift + Return
+        bsp-layout cycle --layouts tiled,monocle,tall,wide,rgrid
+
+super + shift + t
+        bsp-layout set tall
+
+super + shift + l
+        bsp-layout set rgrid
+
+super + shift + m
+        bsp-layout set monocle 
+
+super + shift + w
+        bsp-layout set wide
+
+super + shift + f
+        bsp-layout set tiled
+
+
+##### State/Flags #####
+
+# Set the window state
+super + {t,alt + t,s,alt + f}
+        /usr/bin/bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	/usr/bin/bspc node -g {marked,locked,sticky,private}
+
+
+##### Focus/Swap #####
+
+# Focus the node in the given direction
+super + {_,alt + ctrl }{Left,Down,Up,Right}
+	/usr/bin/bspc node -{f,s} {west,south,north,east}
+
+# Focus the next/previous node in the current desktop
+super + {Right,Left}
+	/usr/bin/bspc node -f {next,prev}.local
+
+# Focus or send to the given desktop
+super + {_,shift + }{1-9}
+	/usr/bin/bspc {desktop -f,node -d} '^{1-9}'
+
+
+##### Preselect #####
+
+
+# Preselect the direction
+super + ctrl + {Left,Down,Up,Right}
+	/usr/bin/bspc node -p {west,south,north,east}
+
+# Preselect the ratio
+super + ctrl + {1-9}
+	/usr/bin/bspc node -o 0.{1-9}
+
+# Cancel the preselection for the focused node
+super + ctrl + space
+	/usr/bin/bspc node -p cancel
+
+# Cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	/usr/bin/bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+##### Move/Resize #####
+
+
+# Expand a window by moving one of its side outward
+super + shift + {Left,Down,Up,Right}
+	/usr/bin/bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# Contract a window by moving one of its side inward
+super + alt + {Left,Down,Up,Right}
+	/usr/bin/bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# Move a floating window 
+super + alt + shift {Left,Down,Up,Right}
+        /usr/bin/bspc node -v {-20 0,0 20,0 -20,20 0}

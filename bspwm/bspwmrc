@@ -1,0 +1,67 @@
+#! /bin/sh
+
+##### Autostart Scripts #####
+
+/home/taylank/.config/sxhkd/launch.sh &		# Hotkey Daemon
+/home/taylank/.config/picom/launch.sh &		# Window Compositor
+/home/taylank/.config/polybar/launch.sh  &		# Status Bar
+/usr/bin/nitrogen --restore &	# Wallpaper Chooser
+/usr/bin/lxpolkit &	       # Policy Kit Client
+/usr/bin/xfce4-clipman &		# Clipboard Manager
+/usr/bin/light-locker &		# Screen Locker
+/usr/bin/rofi -show drun -show-icons & 		# Run launcher
+/home/taylank/.config/dunst/launch.sh & 		# Notification Daemon
+/usr/bin/flameshot &		# Screenshot tool
+/usr/bin/guake & 		# Drop down terminal emulator
+
+##### Screen / Workspaces Setup #####
+
+/usr/bin/bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+##### Configuration #####
+
+# Customization
+/usr/bin/bspc config border_width         0
+/usr/bin/bspc config window_gap           10
+/usr/bin/bspc config focused_border_color "#d75f5f"
+/usr/bin/bspc config normal_border_color "#474749"
+/usr/bin/bspc config presel_feedback_color "#c0b18b"
+/usr/bin/bspc config borderless_monocle   false
+/usr/bin/bspc config gapless_monocle      false
+/usr/bin/bspc config bottom_padding	4
+/usr/bin/bspc config top_padding 	54
+/usr/bin/bspc config left_padding 	4
+/usr/bin/bspc config right_padding	4
+/usr/bin/bspc config directional_focus_tightness low
+
+# Workflow
+/usr/bin/bspc config focus_follows_pointer true
+/usr/bin/bspc config split_ratio          0.52
+
+# Pointer
+/usr/bin/bspc config pointer_motion_interval 16.6666666667 
+/usr/bin/bspc config pointer_modifier mod4
+/usr/bin/bspc config pointer_action1 move
+/usr/bin/bspc config pointer_action3 resize_side
+/usr/bin/bspc config pointer_action3 resize_corner
+
+##### Window Rules #####
+
+/usr/bin/bspc rule -a Guake state=floating
+/usr/bin/bspc rule -a SimpleScreenRecorder state=floating
+/usr/bin/bspc rule -a Cheese state=floating
+/usr/bin/bspc rule -a zoom desktop='^7' 
+/usr/bin/bspc rule -a Firefox desktop='^2'
+/usr/bin/bspc rule -a Code desktop='^5'
+/usr/bin/bspc rule -a Discord desktop='^6'
+/usr/bin/bspc rule -a Spotify desktop='^4'
+/usr/bin/bspc rule -a LibreWolf desktop='^2'
+/usr/bin/bspc rule -a Screenkey state=floating 
+/usr/bin/bspc rule -a Pavucontrol state=floating
+/usr/bin/bspc rule -a Nightly desktop='^2'
+/usr/bin/bspc rule -a Deadbeef state=pseudo_tiled
+/usr/bin/bspc rule -a Galculator state=floating
+/usr/bin/bspc rule -a Xev state=floating
+/usr/bin/bspc rule -a IceCat desktop='^2'
+/usr/bin/bspc rule -a amongus.exe manage=off
+/usr/bin/bspc rule -a Flameshot state=floating

@@ -1,0 +1,131 @@
+[global]
+font = Roboto Regular 11
+
+# Allow a small subset of html markup:
+markup = yes
+plain_text = no
+
+# The format of the message.  Possible variables are:
+format = "<b>%s</b>\n%b"
+
+# Sort messages by urgency.
+sort = no
+
+# Show how many messages are currently hidden (because of geometry).
+indicate_hidden = yes
+
+# Alignment of message text.
+alignment = center
+
+# The frequency with wich text that is longer than the notification
+bounce_freq = 0
+
+# Show age of message if message is older than show_age_threshold seconds
+show_age_threshold = -1
+
+# Split notifications into multiple lines if they don't fit into geometry
+word_wrap = yes
+
+# Ignore newlines '\n' in notifications.
+ignore_newline = no
+
+# Hide duplicate's count and stack them
+stack_duplicates = yes
+hide_duplicate_count = yes
+
+
+# The geometry of the window:
+geometry = "300x50-14+64"
+
+# Shrink window if it's smaller than the width.  Will be ignored if
+shrink = no
+
+# The transparency of the window.  Range: [0; 100].
+transparency = 0
+
+# Don't remove messages, if the user is idle (no mouse or keyboard input)
+idle_threshold = 0
+
+# Which monitor should the notifications be displayed on.
+monitor = 0
+
+# Display notification on focused monitor.  Possible modes are:
+follow = none
+
+# Should a notification popped up from history be sticky or timeout
+# as if it would normally do.
+sticky_history = yes
+
+# Maximum amount of notifications kept in history
+history_length = 15
+
+# Display indicators for URLs (U) and actions (A).
+show_indicators = no
+
+# The height of a single line.  If the height is smaller than the
+line_height = 3
+
+# Draw a line of "separatpr_height" pixel height between two
+separator_height = 10
+
+# Padding between text and separator.
+padding = 5
+
+# Horizontal padding.
+horizontal_padding = 5
+
+# Define a color for the separator.
+separator_color = frame
+
+# Print a notification on startup.
+startup_notification = false
+
+# dmenu path.
+dmenu = /usr/bin/dmenu -p dunst:
+
+# Browser for opening urls in context menu.
+browser = /usr/bin/firefox -new-tab
+
+# Align icons left/right/off
+icon_position = left
+max_icon_size = 80
+
+# Paths to default icons.
+icon_path = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
+
+frame_width = 8
+frame_color = "#00000000"
+
+[shortcuts]
+
+# Close notification.
+close = ctrl+x
+
+# Close all notifications.
+close_all = ctrl+shift+x
+
+# Show history
+history = ctrl+k
+
+# Context menu.
+context = ctrl+shift+period
+
+[urgency_low]
+frame_color = "#343434"
+foreground = "#d3dae3"
+background = "#343434"
+timeout = 7
+
+[urgency_normal]
+frame_color = "#343434"
+foreground = "#d3dae3"
+background = "#343434"
+timeout = 7
+
+[urgency_critical]
+frame_color = "#343434"
+foreground = "#0a84ff"
+background = "#343434"
+timeout = 7
+
+# vim: ft=cfg
